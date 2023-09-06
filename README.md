@@ -1,0 +1,1 @@
+# nwo-vidi-template

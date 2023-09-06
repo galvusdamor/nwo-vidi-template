@@ -1,0 +1,257 @@
+%  This LaTeX-file can be used to submit an application to the NWO Open Competition Domain Science M.
+%  It comes without any guarantee that it works on all platforms. In case you run into problems, you can
+%  contact us by e-mail: enw-M@nwo.nl, but searching the internet might prove to be a faster solution.
+
+% Start the LaTeX-document
+\documentclass[a4paper,9.5pt,fleqn]{application}
+
+
+% Load the style sheet
+\usepackage{application}
+
+% Set spacing
+\linespread{1.08333}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% IMPORTANT FOR BIBLIOGRAPHY %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comment these lines when NOT using bibtex (but thebibliography)
+\usepackage[
+backend=biber,
+maxbibnames=99,
+maxnames=99
+]{biblatex}
+\usepackage{tikz}
+\usepackage{bibentry}
+%\renewcommand{\bibsection}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addbibresource{application.bib}
+
+
+\newcommand{\makeauthorbold}[1]{%
+  \DeclareNameFormat{author}{%
+    \ifthenelse{\value{listcount}=1}
+    {%
+      {\expandafter\ifstrequal\expandafter{\namepartfamily}{#1}{\mkbibbold{\namepartfamily\addcomma\addspace \namepartgiveni}}{\namepartfamily\addcomma\addspace \namepartgiveni}}
+      %
+    }{\ifnumless{\value{listcount}}{\value{liststop}}
+        {\expandafter\ifstrequal\expandafter{\namepartfamily}{#1}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni}}
+        {\expandafter\ifstrequal\expandafter{\namepartfamily}{#1}{\mkbibbold{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}{\addcomma\addspace \namepartfamily\addcomma\addspace \namepartgiveni\addcomma\isdot}}%
+      }
+    \ifthenelse{\value{listcount}<\value{liststop}}
+    {\addcomma\space}{}
+  }
+}
+\makeauthorbold{Applicant}
+
+
+
+\DeclareFieldFormat{doi}{\newline DOI: \href{https://doi.org/#1}{\nolinkurl{#1}}}
+\DeclareFieldFormat{url}{\newline URL: \href{#1}{\nolinkurl{#1}}}
+
+
+\usepackage{lipsum} 
+
+
+
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+\newcommand{\maybehide}[1]{#1}
+
+\usepackage{titlesec}
+\titlespacing*{\paragraph}{0pt}{4.2ex}{1ex}
+\titleformat{\paragraph}[runin]{\bfseries}{}{0pt}{\underline}
+
+% Set the type of application (M-1, M-2 or M-Invest), changes the header
+\ifdefined\haveFirstLit{}
+\lhead{Grant application preproposal form 2023 NWO Talent Programme – Vidi scheme}
+\else
+\lhead{}
+\fi
+
+% Start the main text
+\begin{document}
+%  How to fill out this application form?
+%
+%  IMPORTANT: When writing your proposal, please take into account that it will be assessed by both expert referees
+%  as well as more broadly composed cluster committees and domain wide assessment committees.
+%
+% This application form consists of two parts. Part A is devoted to the scientific proposal, including abstract, summary and a
+% justification for the project budget.Part B contains the name and affiliation of the main applicant and additional
+% information which is not immediately necessary for the scientific proposal but contains administrative information aiding
+% the assessment procedure. Only Part A will be assessed by the referees and the cluster and domain wide assessment
+% committees. Please adhere to the following rules when filling out this application form:
+% * remove the examples and comments before converting the application to PDF and submitting it;
+% * use the font and size as specified in the .sty-file and do not change the margins (2 cm in either direction);
+% * each of the two Parts A and B should start on a new page;
+% * no budget table should be included in this application form; please use the separately provided spreadsheet to 
+%    construct your budget table and upload the pdf of it together with this application form;
+% * the basic details of the proposal (section A.1, incl. abstract and summary) are limited to one page;
+% * the scientific proposal (section A.2) is limited to six pages, which includes figures and tables, but excludes the 
+%    list of literature references.
+% * it is not allowed to include hyperlinks to a personal website, to a group website or to similar information which, in fact,
+%    extends the page limit set;
+% * it is not allowed to include ‘CV information’ such as prizes, (prestigious) grants, et cetera;
+% * NWO signed the San Francisco Declaration on Research Assessment (DORA). DORA aims to call a halt to the
+%    irresponsible use of bibliometric indicators in assessing research and researchers (such as the H-index, Journal Impact Factor and
+%    citations). It is a global initiative for all research disciplines (for more information about this, see https://sfdora.org/). NWO
+%    implements its principles in all instruments. Therefore it is not allowed to mention H-indices, Journal  Impact Factors, overall citations
+%    or similar bibliometric indicators in M-applications. It is allowed to mention the number of citations of a single output item that is
+%    relevant to the proposed research;
+% * it is not allowed to include letters of support or documents other than required.
+ 
+% What to submit to NWO through ISAAC?
+% Upload as a separate pdf:
+% * Application form
+% * Budget table
+% * If applicable: letter request for preferential treatment signed by applicant
+% * If applicable: employer's statement when 
+%       ~ preferential treatment is being applied for (including extension clause)
+%       ~ the contract of the applicant (tenure track or upcoming retirement) does not cover the runtime of the project:
+%           guarantee adequate supervision of the to be appointed personnel
+
+
+%%%%%%%%%%%%%%%%%
+
+%\bibliographystyle{unsrt}
+
+
+
+%\section{Literature references}
+%  The list of references should be relevant to the research proposal, cited in the texts of section A.2, and only include
+%  'open literature'. It should not include internal documents (such as master theses) nor be a mere list of publications of
+%  the main applicant. This section does not count toward the limitation of six pages.
+
+% EXAMPLE: Using bibtex
+%\bibliography{application}
+
+\ifdefined\haveScience
+\part{Institution and field of research}
+\section{NWO Domain}
+Science (ENW)
+
+\section{Main field of research}
+XX.XX.XX Some field
+\fi
+
+
+%%%%%%%%%%%%%%%%%%% profile section
+\ifdefined\haveProfile
+\newpage
+\input{profile}
+\fi
+
+\ifdefined\haveFirstLit
+\vspace{1cm}Total word count \thesection{} Academic Profile: \input{wordProfile.tex} of 1200\\
+\fi
+
+
+%%%%%%%%%%%%%%%%%%% output section
+\ifdefined\haveOutput
+\newpage
+\input{output}
+\fi
+
+\ifdefined\haveFirstLit
+\vspace{1cm}Total word count \thesection{} Key Output: \input{wordOutput.tex} of 400-700\\
+\fi
+
+\ifdefined\haveAbstract
+\input{abstract}
+\vspace{1cm}Total word count \thesection{} Research Idea: \input{wordAbstract.tex} of 150\\
+\fi
+
+\ifdefined\haveFirstLit
+
+\newpage
+\part{Administrative details}
+\section{Personal Details}
+Title, initial, surname: Dr.\ T.\ Applicant\\
+Preferred language of correspondence: English
+
+
+\section{Master's Degree}
+\begin{tabular}{lllllllll}
+University/College of Higher Education& University of Foo\\
+Main subject& 
+\end{tabular}
+
+\section{Doctorate}
+\begin{tabular}{lllllllll}
+University/College of Higher Education:& Bar University\\
+Starting date (dd/mm/yy)& 01/01/1999\\
+Date of PhD award (dd/mm/yy)&   01/01/2019\\
+Supervisor(s) (``Promotor(es)'')& Prof.\ Dr.\ T.\ Supervisor\\
+Thesis title& 
+\end{tabular}
+
+\section{Prospective Host Institution}
+
+\begin{tabular}{lllllllll}
+Host institution& University of Amsterdam\\
+Research group& Institute for Logic, Language, and Computation
+\end{tabular}
+
+\section{Work Experience since Completing Your (First) PhD}
+
+\begin{tabular}{lllllllll}
+Position & Periode & FTE & Position Type & Institution\\ \hline
+PostDoc & 01/2020 - 02/2022 & 1.0 & fixed term & University of Gak\\
+Assistant Professor (UD) & 03/2022 - 08/2023 & 1.0 & fixed term & University of Amsterdam\\
+Assistant Professor (UD) & since 09/2023 & 1.0 & permanent & University of Amsterdam
+\end{tabular}
+
+
+\section{Net. Academic Research Time}
+\begin{tabular}{lllllllll}
+Experience& Number of Months\\
+Research activities & 26.6 (= 18.2 + 8.4)\\
+Education & 18.3 (= 7.8 + 10.5)\\
+Leave & 0 \\
+Management Tasks & 2.1 \\
+\end{tabular}
+
+\paragraph{Percentage of research, teaching and management per position}
+\begin{enumerate}
+	\item 01/2020 - 02/2022 (26 months, 1.0 fte): 70\% research, 30\% teaching
+	\item 03/2022 - 11/2023 (21 months, 1.0 fte): 40\% research, 50\% teaching, 10\% management
+\end{enumerate}
+
+\paragraph{Calculation months of research}
+\begin{enumerate}
+	\item 26 months * 1.0 fte * 70\% research = 18.2 months\\ 
+	      26 months * 1.0 fte * 30\% teaching = 7.8 months
+	\item 21 months * 1.0 fte * 40\% research = 8.4 months\\
+	      21 months * 1.0 fte * 50\% teaching = 10.5 months\\
+	      21 months * 1.0 fte * 10\% management = 2.1 months
+\end{enumerate}
+
+
+\newpage
+
+\section*{Statements by the applicant}
+\subsection*{Use of extension clause }
+If you make use of the extension clause, (only) add the date of the e-mail you have received from \texttt{talent@nwo.nl} with a confirmation that your extension was granted. An extension is only necessary if you exceed the year limit on the reference date. 
+
+\noindent Do you make use of the extension clause: No\\
+If yes, the extension was confirmed on:
+
+
+\subsection*{By submitting this form I declare that:}
+By submitting this form, I endorse the code of conduct for laboratory animals and the code of conduct for biosecurity/possibility for dual use of the expected results and will act accordingly, if applicable.
+
+\noindent $\boxtimes$ I have completed this form truthfully.\\
+$\boxtimes$ I have submitted the completed and signed embedding guarantee.\\
+$\boxtimes$ I declare that I satisfy the nationally and internationally accepted standards for scientific conduct as stated in the Netherlands Code of Conduct for Research Integrity 2018.\\[1cm]
+
+\noindent Initial(s) and surname(s):\\
+Place:\\
+Date:\\
+
+
+\fi
+
+\nocite{*}
+
+
+% And we're done
+\end{document}

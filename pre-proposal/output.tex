@@ -1,0 +1,44 @@
+%\nobibliography*
+
+\ifdefined\haveProfile{} 
+\else
+\renewcommand{\fullcite}[1]{\qquad}
+\renewcommand{\maybehide}[1]{\qquad}
+\fi
+
+
+
+\newcounter{indicatorCounter}
+\setcounter{indicatorCounter}{0}
+\newlength{\heightA}
+\settoheight{\heightA}{A}
+
+\newcommand{\openacc}[1]{\maybehide{Open Access: #1 
+\ifnum\pdfstrcmp{Yes}{#1}=0
+  \includegraphics[height=\heightA]{Open_Access_logo.png}
+\fi
+}}
+\newcommand{\pubtype}[1]{\maybehide{Type: #1}}
+\newcommand{\indicator}[2]{\maybehide{Output Indicator \refstepcounter{indicatorCounter} (#1): #2}}
+
+
+
+\maybehide{\section{Key output}}
+
+\begin{enumerate}[label={\maybehide{(\arabic*)}}]
+%%%% Theory results!
+\item \openacc{Yes}\\
+	\fullcite{CITATION}\\
+	\pubtype{Conference Paper}\\
+	\indicator{Citation total number}{999.999}\\
+	\maybehide{Motivation:} This is the best paper.
+
+\end{enumerate}
+
+\ifdefined\haveFirstLit{} 
+%\bibliography{application}
+%\nobibliography{application}
+\else
+%\bibliography{application}
+%\nobibliography{application}
+\fi

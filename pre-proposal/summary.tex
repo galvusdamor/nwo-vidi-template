@@ -1,0 +1,27 @@
+Planning is the act of devising a goal-leading course of action -- a plan.
+Planning methods using boolean satisfiability (SAT) have proven effective in the past.
+Problematically, these SAT encodings view the plan as a structure-less object and ignore a lot of the inherent structures in planning problems.
+As a result, the generated SAT formulae are unnecessarily complex and are thus harder to solve then actually necessary.
+Over the past decade, several new techniques for exposing these structures have been developed (e.g., operator counting, AND/OR landmarks, Merge\&Shrink abstractions), but have not yet found their way into SAT-based planning.
+
+I will explore how SAT-based planning can benefit from knowledge about such structures -- opening new research directions in SAT-based planning.
+
+
+
+Traditionally, SAT-based planning views the plan as a sequence of identical time-steps without any prior known structure.
+This is problematic as planning problems often implicitly enforce action structures or patterns to occur in plans.
+I will study how to extract implicit action structures that are useful for SAT-based planning (e.g., using landmarks and operator counting) and how to exploit them.
+I will also investigate how a more expressive planning formalism (Factored Transition Systems) can be used to better represent the action model in a SAT formula.
+
+My recent work showed that SAT-based planning is well suited to handle large planning problems, whose actions and predicates cannot be ground instantiated (grounded).
+This work treats the whole problem as if it cannot be ground instantiated -- and thus ignores again implicit problem structures.
+In most cases, only parts of the problem are too large to be grounded, while others can be.
+I will introduce partial grounding, which determines those parts of a planning problem that can and should be grounded.
+I will propose ways to handle partially grounded planning problems in SAT-based planning in order to improve its efficiency.
+
+
+Lastly, I will investigate the connection of SAT-based planning and machine learning (ML).
+SAT-based techniques yield provably correct and provably optimal plans, while this is hard or impossible for ML-based ones.
+Using ML parameters can be determined during search that solely influence runtime, but not correctness.
+Thus, one gains efficiency without loosing theoretical guarantees.
+
